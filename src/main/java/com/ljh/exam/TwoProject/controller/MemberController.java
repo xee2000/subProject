@@ -42,5 +42,12 @@ public class MemberController {
 	    return message;
 	}
 	
+	@GetMapping("/TwoProject/member/Delete")
+	public String memberDelete(int manid) {
+		memberService.memberremove(manid);
+		String message ="Success";
+		return message;
+	}
+	
 	
 }

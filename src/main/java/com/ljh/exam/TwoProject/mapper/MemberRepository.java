@@ -9,12 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.ljh.exam.TwoProject.entity.User;
 
 @Repository
-public interface MemberRepository extends JpaRepository<User, String> {
-    // Define the query method here to fetch member list
+public interface MemberRepository extends JpaRepository<User,Integer> {
 
-	List<User> findAll();
-	
 	Optional<User> findById(String id);
+
 	
 }
 
