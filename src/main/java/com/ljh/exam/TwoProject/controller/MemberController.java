@@ -52,10 +52,14 @@ public class MemberController {
 	
 	@GetMapping("/TwoProject/kakaologin")
 	public String kakaoCallback(@RequestParam String code, Model model) {
+		//주소줄에 들어온 code값을 통해 access_token즉 사용자 인증정보가 담긴 토큰으로 리턴
 		String access_Token = oauthService.getKakaoAccessToken(code);
+		//받아온 토큰을 json형태로 바꿔서 실제 데이터처리가 가능하도록 형태변환
 		JsonObject jsonobject = createKakaoUser(access_Token);
+		//사용자 고유 id값을 가져온다 이 id값은 유니크하다
 		JsonElement JsonId = jsonobject.get("id");
 		String id = JsonId.getAsString();
+		//properties에는 사용자가 동의한 내용에 따른 고유 정보가 담겨있다.
 		 JsonObject properties = jsonobject.getAsJsonObject("properties");
 	        String nickname = properties.get("nickname").getAsString();
 	      int result = memberService.socialgetById(id);
@@ -76,15 +80,19 @@ public class MemberController {
 	public JsonObject createKakaoUser(String token) {
 	    String reqURL = "https://kapi.kakao.com/v2/user/me";
 
-	    // Retrieve user information using access_token
 	    try {
+	    	//해당 두개의 구조는 같이 딸려온다 url을 가져오게 되는데 그 url이 보안등의 문제가 없을경우
+	    	//해당 주소지의 웹등에서 데이터를 처리하는데 사용
 	        URL url = new URL(reqURL);
+	        //해당 메서드는 기본적으로 GET이 기본방식이다
+	        //url.openConnection은 httpUrlconnection을 통해 구현된것 
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
 	        conn.setRequestMethod("GET");
-	        conn.setRequestProperty("Authorization", "Bearer " + token); // Create header to be transmitted, transmit access_token
-
-	        // Read the JSON type response message obtained through the request
+	        //위가 메서드를 규정하는거면 아래에서는 key와 value형태로 지정한다
+	        conn.setRequestProperty("Authorization", "Bearer " + token); 
+	        
+	        //bufferereader는 scanner와 유사한 개념 여기선 선언이 진행된다.
 	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	        String line;
 	        StringBuilder result = new StringBuilder();
@@ -95,7 +103,6 @@ public class MemberController {
 	        br.close();
 
 
-	        // Parsing JSON with the Gson library
 	        Gson gson = new Gson();
 	        JsonObject jsonObject = gson.fromJson(result.toString(), JsonObject.class);
 
