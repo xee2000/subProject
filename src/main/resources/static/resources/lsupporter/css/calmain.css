@@ -1,0 +1,39 @@
+/*달력의 타이틀 */
+.fc-toolbar-title{
+ font-family: 'TheJamsil5Bold';
+    font-weight:bold;
+} 
+/*월화수목 글자  */
+.fc-col-header-cell-cushion {
+font-size:2rem;
+font-family: 'NanumSquareNeo-Variable';
+color:black;
+}
+/* 요일글자 클릭시 */
+.fc-col-header-cell-cushion:hover{
+color:blue;
+}
+.fc-daygrid-day-number{
+font-size:2rem;
+}
+/*타임그리드 시간  */
+.fc-timegrid-slot-label-cushion{
+font-size:2rem;
+}
+/*일정하단의 갯수  */
+.fc-daygrid-day-bottom{
+	text-align:end;
+	
+}
+:root {
+  --fc-daygrid-event-dot-width: 15px;
+}
+#calendar{
+width:100%;
+margin:0 auto;
+font-size:1.5rem;
+}
+.backbtn{
+margin-right:89%;
+}
+

@@ -1,0 +1,124 @@
+.reportmenu{
+	width:100%;
+	
+}
+  .card-title{
+  font-size:2rem;
+  text-align:center;
+  }
+  
+  .report_title{
+   font-family: 'establishRetrosansOTF';
+  }
+  .card-header{
+    background: linear-gradient(#5DADE2, #138496); 
+  }
+
+fmt{
+font-size:2rem;
+}
+.regDate{
+font-size:2rem;
+}
+.report_member{
+font-size:2rem;
+}
+body{
+font-size:2rem;
+}
+.backbtn{
+margin-right:81%;
+}
+.tg-2xpi{
+	
+	text-align:center;
+}
+.report {
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .report-content {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+         td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+         padding: 5px;
+        border-bottom: 1px solid #ccc;
+        	text-align: center;
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        td:first-child {
+            text-align: center;
+        }
+
+select {
+	font-size:2rem;
+	width:30%;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+  color: #333;
+  background-image: url('dropdown-arrow.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select:focus {
+  outline: none;
+  border-bottom-color: #5DADE2;
+}
+
+textarea {
+	width:100%;
+  font-size: 2rem;
+  color: #333;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  transition: border-color 0.3s ease-in-out;
+}
+textarea:focus {
+  border-color: #5DADE2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="date"] {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.5rem;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+input[type="text"] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size:2rem;
+}
+
+

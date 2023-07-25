@@ -1,0 +1,85 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="/resources/lsupporter/css/head.css">
+
+	<meta charset="UTF-8">
+	<title>${pageTitle}</title>
+	
+	<!--알림창 스타일  -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<!-- 테일윈드 불러오기 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css"/>	
+	
+
+ <script src="/resources/lsupporter/js/common.js"></script>
+	<!--데이지 UI  -->
+	<link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css" rel="stylesheet" type="text/css" />
+	<!-- 폰트어썸 불러오기 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+	<!--summernote css  -->
+	<!-- 사이트 공통 CSS -->
+  <!-- fullcalendar CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+
+<script src="/bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+</head>
+<body class="body">
+	<nav class="main-header navbar navbar-expand-md navbar-light navbar-white" style="padding: 0px;">
+  <div class="header_main">
+    <a href="/ers/lsupporter/main" class="navbar-brand">
+      <img src="/resources/lsupporter/img/사회복지사이미지.png" class="brand-image img-circle elevation-3" style="opacity: 0.8; width: 200px; height: 150px;">
+    </a>
+    <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="head_title collapse navbar-collapse order-3" id="navbarCollapse">
+      <div class="brand_text" onclick="location.href='/ers/lsupporter/main'">응급안전안심서비스</div>
+    </div>
+
+    <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+      <!-- 로그인 -->
+      <c:if test="${loginUser != null }">
+        <li class="item_bar">
+          <img style="width: 70px; height: 70px;" onclick="location.href='/ers/lsupporter/logout'" src="/resources/lsupporter/img/변경자물쇠.png" alt="">
+          <div class="header_menu_name" onclick="location.href='/ers/lsupporter/logout'">로그아웃</div>
+        </li>
+      </c:if>
+      <c:if test="${loginUser == null }">
+        <li class="item_bar">
+          <img style="width: 70px; height: 70px;" onclick="location.href='/ers/lsupporter/loginForm'" src="/resources/lsupporter/img/변경자물쇠.png" alt="">
+          <div class="header_menu_name" onclick="location.href='/user/loginForm'">로그인</div>
+        </li>
+      </c:if>
+      <!-- 공지사항 -->
+      <li class="item_bar">
+        <img style="width: 70px; height: 70px;" onclick="location.href='/ers/lsupporter/notice'" src="/resources/lsupporter/img/확성기.png" alt="">
+        <div class="header_menu_name">공지사항</div>
+      </li>
+      <!-- 마이페이지 -->
+      <c:if test="${loginUser != null }">
+        <li class="item_bar">
+          <img style="width: 70px; height: 70px;" onclick="location.href='/ers/lsupporter/mypage'" src="/resources/lsupporter/img/마이페이지.png" alt="">
+          <div class="header_menu_name">마이페이지</div>
+        </li>
+      </c:if>
+    </ul>
+  </div>
+</nav>
+
+  
+  <section class="mt-5">
+    <div class="container mx-auto px-3">
+      
+    </div>
+  </section>
+  

@@ -1,0 +1,27 @@
+.login{
+width:700px;
+height:800px;
+}
+@font-face {
+    font-family: 'MBC1961GulimM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/MBC1961GulimM.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.login-box-msg, .idcheck{
+font-family: 'MBC1961GulimM';
+font-size:2rem;
+}
+input{
+height: 100px;
+}
+.idsearch ,.form-control{
+font-size:2rem;
+height:100px;
+}
+.password_search,.login_search{
+font-size:1.2rem;
+}
+.idsearch{
+height:70px;
+}

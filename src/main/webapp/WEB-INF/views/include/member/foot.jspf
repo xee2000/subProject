@@ -1,0 +1,67 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+	<!--summernote  -->
+    	
+ 
+	</body>
+	
+	<script>
+	function datesearch() {
+	    var startDate = document.getElementsByName("startday")[0].value;
+	    var endDate = document.getElementsByName("endday")[0];
+	  
+	    var startArray = startDate.split('-');
+	    var endArray = endDate.value.split('-');
+
+	    // Create a Date object using the year, month, and day contained in the array
+	    var start_date = new Date(startArray[0], startArray[1], startArray[2]);
+	    var end_date = new Date(endArray[0], endArray[1], endArray[2]);
+
+	    // Convert the date to numeric date information and compare.
+	    if (start_date.getTime() > end_date.getTime()) {
+	        alert("종료날짜가 시작날짜보다 빠르지 않게 선택해주세요.");
+	        endDate.value = ""; // Reset the value of endday input field
+	        return false;
+	    }
+	}
+
+  </script>
+  
+  <script>
+	window.onload=function(){
+		lsupporterPictureThumb('<%=request.getContextPath()%>');
+	}
+	
+	
+</script>
+
+<script>
+	window.onload=function(){
+		MemberPictureThumb('<%=request.getContextPath()%>');
+	}
+	
+	
+</script>
+
+<script>
+      $('#content').summernote({
+        placeholder: '내용을 기입해주세요',
+        tabsize: 2,
+        height: 140,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    </script>
+
+
+
+
+</html>

@@ -1,0 +1,32 @@
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:1.5rem;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:1.5rem;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-uqo3{background-color:#efefef;text-align:center;vertical-align:middle}
+.tg .tg-yj5y{background-color:#efefef;border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-2xpi{background-color:#efefef;border-color:inherit;font-size:1.5rem;text-align:center;vertical-align:middle}
+.tg .tg-l8qj{background-color:#ffffff;border-color:inherit;font-size:1.5rem;text-align:left;vertical-align:middle}
+.tg .tg-0pky{border-color:inherit;text-align:center;vertical-align:middle}
+.tg .tg-0lax{text-align:center;vertical-align:middle}
+.tg .tg-ynlj{text-align:center;vertical-align:middle}
+.tg .tg-c3ow{text-align:center;vertical-align:middle}
+input{
+width:100%;
+border:1px solid black;
+text-align:center;
+}
+td, th{
+text-align:center;
+}
+.title{
+text-align:center;
+font-family: 'MBC1961GulimM';
+font-size:2rem;
+}
+body{
+font-size:1.5rem;
+}
+.backbtn{
+margin-right:78%;
+}

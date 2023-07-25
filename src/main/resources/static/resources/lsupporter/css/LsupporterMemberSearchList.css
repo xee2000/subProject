@@ -1,0 +1,175 @@
+@font-face {
+font-family: 'TheJamsil5Bold';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+font-weight: 700;
+font-style: normal;
+}
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MICEGothic Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face{
+  font-family:'bitbit';
+  src:url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2') ;
+}
+@font-face {
+    font-family: 'establishRetrosansOTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/establishRetrosansOTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.search_container {
+	position: relative;
+}
+
+.searchinput {
+	color:black;
+	border: 1px solid black;
+	border-radius: 5px;
+	font-size: 1.5rem;
+	height: 50px;
+	text-align: left;
+}
+.keywordoption{
+	    background: #42444e;
+	
+}
+
+.searchinput_name {
+	text-align: center;
+}
+
+.fa-search {
+	font-size: 2rem;
+	color:black;
+}
+
+#popupBtn {
+	width: 150px;
+	height: 50px;
+}
+
+#modalWrap {
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	margin-top: 10%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.caltitle{
+   font-family: 'establishRetrosansOTF';
+  font-size:2rem;
+}
+
+.modal_content {
+	text-align: center;
+}
+
+/* Specific styles for modal body */
+#modalBody {
+	padding: 30px;
+	margin: 0 auto;
+	border: 1px solid #777;
+	background-color: #fff;
+}
+body {
+  color: #666;
+  font: 14px/24px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+th,
+td {
+  padding: 6px 15px;
+  text-align:center;
+  font-size:2rem;
+}
+th {
+  background: #42444e;
+  color: #fff;
+}
+tr:first-child th:first-child {
+  border-top-left-radius: 6px;
+}
+tr:first-child th:last-child {
+  border-top-right-radius: 6px;
+}
+td {
+  border-right: 1px solid #c6c9cc;
+  border-bottom: 1px solid #c6c9cc;
+}
+td:first-child {
+  border-left: 1px solid #c6c9cc;
+}
+tr:nth-child(even) td {
+  background: #eaeaed;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius: 6px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 6px;
+}
+
+input[type="text"] {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 2rem;
+}
+
+.btn-custom {
+  background-color: #ff3399;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-custom .button-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.btn-custom .button-text {
+  display: inline-block;
+  margin-left: 20px;
+}
+.button-text:hover{
+color:white;	
+    font-family: 'MICEGothic Bold';
+}
+.btn-custom:hover {
+  background-color: #ff0066;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  color:white;
+}
+
+.btn-custom:hover .button-icon {
+  transform: translateY(-50%) rotate(180deg);
+  transition: transform 0.3s ease-in-out;
+  color:white;
+}

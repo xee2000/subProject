@@ -20,12 +20,12 @@ public class MemberService {
 	@Transactional
 	public List<User> memberList() {
 		return memberRepository.findAll();
+		
 	}
 
-	@SuppressWarnings("deprecation")
-	public Optional<User> memberDetail(String id) {
+	public Optional<User> memberDetail(int manid) {
 		// TODO Auto-generated method stub
-		return memberRepository.findById(id);
+		return memberRepository.findById(manid);
 	}
 
 
@@ -39,4 +39,26 @@ public class MemberService {
 		
 	}
 
+	public void socialkakaoregist(String id) {
+		User user = new User();
+	    user.setId(id);
+	    memberRepository.save(user);
+		
+	}
+
+	public int socialgetById(String id) {
+		 long count = memberRepository.countById(id);
+			switch((int)count) {
+			case 0:
+				//아이디 존재없음
+				return (int)count;
+			case 1:
+				//아이디 존재
+				return (int)count;
+				
+		}
+			return (int)count;
+		}
+
 }
+

@@ -1,0 +1,60 @@
+# Thymeleaf 설정
+thymeleaf:
+  check-template-location: true
+  prefix: classpath:/templates/
+  suffix: .html
+  cache: false
+
+mvc:
+  static-path-pattern: /static/**
+
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/mystudy
+    username: root
+    password: java
+    driverClassName: org.mariadb.jdbc.Driver
+ 
+# Encoding
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  port: 80
+
+  mvc:
+    converters:
+      preferred-json-mapper: gson
+
+servlet:
+  multipart:
+    max-file-size: 1MB
+    max-request-size: 10MB
+
+# JDBC
+datasource:
+  driverClassName: org.mariadb.jdbc.Driver
+  url: jdbc:mariadb://localhost:3306/mystudy
+  username: root
+  password: java
+
+jpa:
+  hibernate:
+    ddl-auto: update
+  show-sql: true
+  properties:
+    hibernate:
+      dialect: org.hibernate.dialect.MariaDBDialect
+      format_sql: true
+
+# MyBatis
+mybatis:
+  type-aliases-package: com.ljh.exam.TwoProject.entity
+  configuration:
+    map-underscore-to-camel-case: false
+  mapper-locations: com.ljh.exam.TwoProject.mapper/*.xml
+
+profiles:
+  include: oauth
