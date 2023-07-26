@@ -9,11 +9,10 @@ import com.ljh.exam.TwoProject.entity.User;
 @Repository
 public interface MemberRepository extends JpaRepository<User,Integer> {
 
-	void save(String id);
 
 	 long countById(String id);
 
-
+	User findById(String id);
 	
 }
 

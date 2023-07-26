@@ -39,14 +39,13 @@ public class MemberService {
 		
 	}
 
-	public void socialkakaoregist(String id) {
-		User user = new User();
-	    user.setId(id);
-	    memberRepository.save(user);
+	public void socialkakaoregist(String id, String nickname) {
+		User user = new User(id,nickname);
+		 memberRepository.save(user);
 		
 	}
 
-	public int socialgetById(String id) {
+	public int sociallogin(String id) {
 		 long count = memberRepository.countById(id);
 			switch((int)count) {
 			case 0:
@@ -59,6 +58,11 @@ public class MemberService {
 		}
 			return (int)count;
 		}
+
+	public User getById(String id) {
+	User LoginUser = memberRepository.findById(id);
+		return LoginUser;
+	}
 
 }
 

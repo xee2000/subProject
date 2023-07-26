@@ -58,3 +58,6 @@ mybatis:
 
 profiles:
   include: oauth
+
+  spring:
+  profiles: oauth

@@ -7,12 +7,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 @Getter
-@Setter
 @ToString
 @Entity
+@NoArgsConstructor
 public class User{
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +22,11 @@ public class User{
     private String name;	
     private String nickname;	
     private String phone;
+
+	public User(String id, String nickname) {
+		this.id = id;
+		this.nickname = nickname;
+		}
+    
 
 	}
