@@ -13,8 +13,8 @@
 <p class="title">게시판 작성</p>
 
 <body>
-<form action="regist" method="POST" id="writeForm">
-<label for="title">작성자</label>
+<form action="writeregist" method="POST" id="writeForm">
+<label for="writer">작성자</label>
 <input type="text" name="writer" th:value="${nickname}" style="width:60%; height:20%;"><br/>
 <label for="title">제목</label>
 <input type="text" name="title" value="" style="width:60%;height:20%;"><br/>
@@ -28,6 +28,7 @@
         var form = $('#writeForm');
         var confirmationMessage = "작성하시겠습니까?";
         if (confirm(confirmationMessage)) {
+        	
             form.submit(); 
         }
     }
