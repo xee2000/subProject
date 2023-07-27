@@ -35,7 +35,7 @@ public class NoticeController {
 	    model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
 	    model.addAttribute("next", pageable.next().getPageNumber());
 	    model.addAttribute("hasNext", list.hasNext());
-	    model.addAttribute("hasPrev", list.hasPrevious());
+	    model.addAttribute("hasPrev", list.hasPrevious());	
 	    model.addAttribute("noticeList", noticeList);
 
 	    return "notice/list";

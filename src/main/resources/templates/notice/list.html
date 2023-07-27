@@ -61,15 +61,21 @@
                         </table>	
                        
                     </div>
-                </div>
 <div class="pagination justify-content-center">
-    <a th:if="${hasPrev}" th:href="@{(${#httpServletRequest.requestURI}) + '?page=' + ${previous}}" role="button" class="btn btn-lg bi bi-caret-left-square-fill"></a>
+    <!-- Previous button -->
+    <a th:if="${hasPrev}" th:href="'?page=' + ${previous}" role="button" class="btn btn-lg btn-primary bi bi-caret-left-square-fill"></a>
     <a th:unless="${hasPrev}" role="button" class="btn btn-lg bi bi-caret-left-square-fill disabled"></a>
+    
+    <!-- Page numbers -->
+    <span th:each="i : ${#numbers.sequence(0, posts.totalPages - 1)}">
+        <a th:if="${posts.number != i}" th:href="'?page=' + ${i}" role="button" class="btn btn-lg bi bi-dot"></a>
+        <a th:if="${posts.number == i}" role="button" class="btn btn-lg btn-primary bi bi-dot"></a>
+    </span>
 
-    <a th:if="${hasNext}" th:href="@{(${#httpServletRequest.requestURI}) + '?page=' + ${next}}" role="button" class="btn btn-lg bi bi-caret-right-square-fill"></a>
+    <!-- Next button -->
+    <a th:if="${hasNext}" th:href="'?page=' + ${next}" role="button" class="btn btn-lg btn-primary bi bi-caret-right-square-fill"></a>
     <a th:unless="${hasNext}" role="button" class="btn btn-lg bi bi-caret-right-square-fill disabled"></a>
 </div>
-
 
 
             </div>
