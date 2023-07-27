@@ -2,7 +2,6 @@ package com.ljh.exam.TwoProject.entity;
 
 import java.util.Date;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,5 +20,16 @@ public class Notice {
 	private String content;
 	private Date regDate;
 	private Date updateDate;
+	public Notice(int nno, String writer, String title, String content, Date regDate, Date updateDate) {
+		super();
+		this.nno = nno;
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+		this.regDate = regDate;
+		this.updateDate = updateDate;
+	}
+	
+	
 	
 }

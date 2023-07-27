@@ -26,35 +26,14 @@
         </div>
         <div class="row body_case">
             <div class="col-12">
-                <!-- <div class="category_date_menubar">
-                    <div class="date mb-4">
-                        <input type="date" name="startday" value="${param.startday}" style="width:250px;border:1px solid black;">
-                        <span class="dash">-</span>
-                        <input type="date" name="endday" value="${param.endday}" id="enddayInput" oninput="datesearch();" style="width:250px;border:1px solid black;">
-                    </div>
-                    <div class="search_bar search_bar_main flex mb-1">
-                        <div class="search_bar flex">
-                            <select class="keywordoption mr-2" name="searchType" id="searchType">
-                                <option value="" disabled selected>검색</option>
-                                <option value="tc" th:selected="${cri.searchType == 'all'}">전체</option>
-                                <option value="t" th:selected="${cri.searchType == 'n'}">제목</option>
-                                <option value="tc" th:selected="${cri.searchType == 'g'}">제목+내용</option>
-                            </select>
-                            <div class="search_container flex items-center border border-gray-300 rounded-md overflow-hidden">
-                                <input class="searchinput w-full py-2 px-4 pr-10" autocomplete="off" type="text" name="keyword" required value="${cri.keyword}" id="search_keyword" onkeyup="handleEnterKey(event)">
-                                <button type="button" class="absolute right-0 top-0 bottom-0 p-2" id="button" data-card-widget="search" th:onclick="|list_go(1);|">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <button type="button" class="btn btn-dark btn-lg ml-3" th:onclick="|location.href='/notice/registForm'|">작성</button>
+               
+               <button type="button" class="btn btn-dark btn-lg ml-3" onclick="location.href='/TwoProject/user/notice/writeForm'">작성하기</button>
+
 
                 <div class="row">
                     <div class="col-12 memberlistable">
 
-                        <table class="tg notice_table" style="undefined;table-layout: fixed; width: 100%;">
+                        <table class="tg notice_table" style="table-layout: fixed; width: 100%;">	
                             <colgroup>
                                 <col style="width: 100.333333px">
                                 <col style="width: 250.333333px">
@@ -77,16 +56,22 @@
                                     <td class="tg-0pky" th:text="${notice.title}" th:onclick="|location.href='/detail?nno=' + ${notice.nno}|">Title</td>
                                     <td class="tg-0pky" th:text="${#dates.format(notice.regDate, 'yyyy-MM-dd')}">Date</td>
                                     <td class="tg-0pky" th:text="${notice.writer}">작성자</td>
-                                <!--     <td class="tg-0pky" th:text="${notice.count}">Count</td> -->
                                 </tr>
                             </tbody>
-                        </table>
-                        <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-          <a th:if="${page != nowPage}" th:href="@{/notice/list(page = ${page - 1}, searchKeyword = ${param.searchKeyword})}" th:text="${page}"></a>
-          <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
-      </th:block>
+                        </table>	
+                       
                     </div>
                 </div>
+<div class="pagination justify-content-center">
+    <a th:if="${hasPrev}" th:href="@{(${#httpServletRequest.requestURI}) + '?page=' + ${previous}}" role="button" class="btn btn-lg bi bi-caret-left-square-fill"></a>
+    <a th:unless="${hasPrev}" role="button" class="btn btn-lg bi bi-caret-left-square-fill disabled"></a>
+
+    <a th:if="${hasNext}" th:href="@{(${#httpServletRequest.requestURI}) + '?page=' + ${next}}" role="button" class="btn btn-lg bi bi-caret-right-square-fill"></a>
+    <a th:unless="${hasNext}" role="button" class="btn btn-lg bi bi-caret-right-square-fill disabled"></a>
+</div>
+
+
+
             </div>
         </div>
     </section>

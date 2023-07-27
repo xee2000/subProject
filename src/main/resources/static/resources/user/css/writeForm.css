@@ -1,4 +1,4 @@
-@font-face {
+@charset "UTF-8";@font-face {
 font-family: 'TheJamsil5Bold';
 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
 font-weight: 700;
@@ -38,4 +38,9 @@ src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/MBC196
 font-weight: normal;
 font-style: normal;
 }
-
+.title{
+	font-family: 'MBC1961GulimM';
+	color:red;
+	font-size:2rem;
+	text-align:center;
+}
