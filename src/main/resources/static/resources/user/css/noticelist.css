@@ -50,3 +50,6 @@ font-style: normal;
 .pagination{
 	justify-content: center;
 }
+.searchKeyword:hover{
+border:2px solid red;
+}

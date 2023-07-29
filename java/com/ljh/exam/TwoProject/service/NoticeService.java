@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.ljh.exam.TwoProject.entity.Notice;
@@ -44,8 +45,10 @@ public class NoticeService {
 		return noticeRepository.findAll(pageable);
 	}
 
-	public Page<Notice> noticesearchList(String searchKeyword, Pageable pageable) {
-		return noticeRepository.findByTitleContaining(searchKeyword,pageable);
+
+	public Page<Notice> noticesearchList(Specification<Notice> spec, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return noticeRepository.findAll(spec, pageable);
 	}
 
 
