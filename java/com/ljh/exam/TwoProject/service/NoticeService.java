@@ -1,14 +1,14 @@
 package com.ljh.exam.TwoProject.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
+import com.ljh.exam.TwoProject.PersonSpecification.PersonSpecification;
 import com.ljh.exam.TwoProject.entity.Notice;
 import com.ljh.exam.TwoProject.mapper.NoticeRepository;
 
@@ -46,11 +46,21 @@ public class NoticeService {
 	}
 
 
-	public Page<Notice> noticesearchList(Specification<Notice> spec, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return noticeRepository.findAll(spec, pageable);
-	}
+	public Page<Notice> noticesearchList(String title, String content, String writer, Pageable pageable) {
+        Specification<Notice> spec = Specification.where(null);
 
+        if (!StringUtils.isEmpty(title)) {
+            spec = spec.and(PersonSpecification.equalTitle(title));
+        }
+        if (!StringUtils.isEmpty(content)) {
+            spec = spec.and(PersonSpecification.equalContent(content));
+        }
+        if (!StringUtils.isEmpty(writer)) {
+            spec = spec.and(PersonSpecification.equalWriter(writer));
+        }
+
+        return noticeRepository.findAll(spec, pageable);
+    }
 
 	
 }

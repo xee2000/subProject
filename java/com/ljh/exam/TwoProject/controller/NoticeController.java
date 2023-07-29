@@ -33,26 +33,12 @@ public class NoticeController {
                             Pageable pageable,
                             String title, String content, String writer) {
 
-        Specification<Notice> spec = (root, query, criteriaBuilder) -> null;
-        Page<Notice> list = null;
-        System.out.println("content : " + content);
-        if (title == null || content == null || writer == null) {
-            list = noticeService.noticeList(pageable);
-        } else {
-            if (title != null)
-                spec = spec.and(PersonSpecification.equalTitle(title));
-            if (content != null)
-                spec = spec.and(PersonSpecification.equalContent(content));
-            if (writer != null)
-                spec = spec.and(PersonSpecification.equalWriter(writer));
-        }
-
-        list = noticeService.noticesearchList(spec, pageable);
-
-        int nowPage = pageable.getPageNumber() + 1; // Add 1 to convert 0-based index to 1-based page number
+        Page<Notice> list = noticeService.noticesearchList(title, content, writer, pageable);
+        int nowPage = list.getNumber(); // Add 1 to convert 0-based index to 1-based page number
         int startPage = Math.max(nowPage - 4, 1);
         int endPage = Math.min(nowPage + 5, list.getTotalPages());
-
+        System.out.println("content : " +content);
+        System.out.println("list :" +list.getContent());
         model.addAttribute("list", list);
         model.addAttribute("nowPage", nowPage);
         model.addAttribute("startPage", startPage);
