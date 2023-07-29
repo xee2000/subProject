@@ -28,10 +28,14 @@
             <div class="col-12">
             
 <form th:action="@{/TwoProject/user/notice}" method="get">
-    <input type="text" name="searchKeyword" th:value="${searchKeyword}" class="searchKeyword" style="border: 2px solid black; border-radius: 5px;"/>
-    <input type="text" name="title" th:value="${title}" class="searchKeyword" style="border: 2px solid black; border-radius: 5px;" placeholder="Title"/>
-    <input type="text" name="content" th:value="${content}" class="searchKeyword" style="border: 2px solid black; border-radius: 5px;" placeholder="Content"/>
-    <input type="text" name="writer" th:value="${writer}" class="searchKeyword" style="border: 2px solid black; border-radius: 5px;" placeholder="Writer"/>
+<select name="searchType">	
+<option value="" disabled >선택</option>
+<option value="title">제목</option>
+<option value="content">내용</option>
+<option value="writer">작성자</option>
+<option value="tc">제목+내용</option>
+</select>
+    <input type="text" name="keyword" th:value="${keyword}" class="searchKeyword" style="border: 2px solid black; border-radius: 5px;"/>
     <button type="submit">Search</button>
 </form>
 

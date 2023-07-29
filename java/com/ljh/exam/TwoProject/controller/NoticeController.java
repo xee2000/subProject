@@ -27,9 +27,10 @@ public class NoticeController {
 	                        @RequestParam(name = "page", defaultValue = "1") int page,
 	                        @PageableDefault(size = 10, sort = "nno", direction = Sort.Direction.DESC)
 	                        Pageable pageable,
-	                        String title, String content, String writer) {
+	                        @RequestParam(name = "searchType", defaultValue = "") String searchType,
+	                        @RequestParam(name = "keyword", defaultValue = "") String keyword) {
 
-	    Page<Notice> list = noticeService.noticesearchList(title, content, writer, pageable.withPage(page - 1));
+	    Page<Notice> list = noticeService.noticesearchList(searchType,keyword, pageable.withPage(page - 1));
 	    int nowPage = list.getNumber() + 1; 
 	    int startPage = Math.max(nowPage - 4, 1);
 	    int endPage = Math.min(nowPage + 5, list.getTotalPages());
