@@ -26,59 +26,55 @@
         </div>
         <div class="row body_case">
             <div class="col-12">
+            
+            <form th:action="@{/TwoProject/user/notice}" method="get">
+            <input type="text" name="searchKeyword" th:value="${searchKeyword}"/>
+            <button type="submit">검색</button>
+                        </form>
                
                <button type="button" class="btn btn-dark btn-lg ml-3" onclick="location.href='/TwoProject/user/notice/writeForm'">작성하기</button>
 
 
                 <div class="row">
-                    <div class="col-12 memberlistable">
+    <div class="col-12 memberlistable">
+         <table>
+      <thead>
+      <tr>
+          <th>글번호</th>
+          <th>제목</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!--list에 testboard가 담겨있는것을 하나씩 빼준다-->
+      <tr th:each="notice : ${list}">
+      <td th:text="${notice.nno}">1</td>
 
-                        <table class="tg notice_table" style="table-layout: fixed; width: 100%;">	
-                            <colgroup>
-                                <col style="width: 100.333333px">
-                                <col style="width: 250.333333px">
-                                <col style="width: 200px">
-                                <col style="width: 150.666666px">
-                                <col style="width: 150.666666px">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th class="tg-c3ow">번호</th>
-                                    <th class="tg-c3ow">제목</th>
-                                    <th class="tg-c3ow">등록일자</th>
-                                    <th class="tg-c3ow">작성자</th>
-                                    <th class="tg-c3ow">조회수</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each="notice : ${noticeList}">
-                                    <td class="tg-0pky" th:text="${notice.nno}">글번호</td>
-                                    <td class="tg-0pky" th:text="${notice.title}" th:onclick="|location.href='/detail?nno=' + ${notice.nno}|">Title</td>
-                                    <td class="tg-0pky" th:text="${#dates.format(notice.regDate, 'yyyy-MM-dd')}">Date</td>
-                                    <td class="tg-0pky" th:text="${notice.writer}">작성자</td>
-                                </tr>
-                            </tbody>
-                        </table>	
-                       
-                    </div>
-<div class="pagination justify-content-center">
-    <!-- Previous button -->
-    <a th:if="${hasPrev}" th:href="'?page=' + ${previous}" role="button" class="btn btn-lg btn-primary bi bi-caret-left-square-fill"></a>
-    <a th:unless="${hasPrev}" role="button" class="btn btn-lg bi bi-caret-left-square-fill disabled"></a>
-    
-    <!-- Page numbers -->
-    <span th:each="i : ${#numbers.sequence(0, posts.totalPages - 1)}">
-        <a th:if="${posts.number != i}" th:href="'?page=' + ${i}" role="button" class="btn btn-lg bi bi-dot"></a>
-        <a th:if="${posts.number == i}" role="button" class="btn btn-lg btn-primary bi bi-dot"></a>
-    </span>
+      <td><!--list와 상세 연결-->
+          <!--href a태그에 링크를 걸어주는역할 --> <!--localhost:8080/board/view?id=board.id-->
+          <a th:text="${notice.title}" th:href="@{/notice/detail(nno=${notice.nno})}"></a>
+          <!--제목입니다-->
+      </td>
 
-    <!-- Next button -->
-    <a th:if="${hasNext}" th:href="'?page=' + ${next}" role="button" class="btn btn-lg btn-primary bi bi-caret-right-square-fill"></a>
-    <a th:unless="${hasNext}" role="button" class="btn btn-lg bi bi-caret-right-square-fill disabled"></a>
+      </tr>
+      </tbody>
+  </table>
+    </div>
 </div>
 
+<!-- Pagination -->
+ <th:block th:each= "page : ${#numbers.sequence(startPage, endPage)}">
+                                                        <!--검색기능-4-->
+        <a th:if="${page != nowPage}"
+           th:href="@{/TwoProject/user/notice(page = ${page -1}, searchKeyword = ${param.searchKeyword})}"
+           th:text="${page}">
+        </a>
 
-            </div>
+        <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
+    </th:block>
+
+
+
+
         </div>
     </section>
     <!--foot -->

@@ -34,20 +34,20 @@ public class NoticeService {
 
 	}
 
-	public List<Notice> noticeList() {
-		return noticeRepository.findAll();
-	}
-
 	public void noticewrite(Notice notice) {
 		noticeRepository.save(notice);
 		
 	}
 
 
-	public Page<Notice> pageList(Pageable pageable) {
-		
+	public Page<Notice> noticeList(Pageable pageable) {
 		return noticeRepository.findAll(pageable);
 	}
-	 
 
+	public Page<Notice> noticesearchList(String searchKeyword, Pageable pageable) {
+		return noticeRepository.findByTitleContaining(searchKeyword,pageable);
+	}
+
+
+	
 }
