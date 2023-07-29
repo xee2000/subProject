@@ -72,15 +72,14 @@
 <!-- Pagination -->
 									<!--특정한 값을 반복할때 사용 즉 시작과 끝을 반복시키는 구조  -->
 									<!--만약 startPage가 1이고 endPage가 3이면 1부터 3까지 반복  -->
-<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+<th:block th:each="page: ${#numbers.sequence(startPage, endPage)}">
     <a th:if="${page != nowPage}"
-       th:href="@{/TwoProject/user/notice(page=${page - 1}, searchKeyword=${searchKeyword}, title=${title}, content=${content}, writer=${writer})}"
+       th:href="@{/TwoProject/user/notice(page=${page}, title=${title}, content=${content}, writer=${writer})}"
        th:text="${page}">
     </a>
 
-    <strong th:if="${page == nowPage}" th:text="${page}" style="color: red"></strong>
+    <strong th:if="${page == nowPage}" th:text="${page}" style="color:red"></strong>
 </th:block>
-
 
 
 

@@ -1,7 +1,7 @@
 package com.ljh.exam.TwoProject.PersonSpecification;
 
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.util.StringUtils;
+import org.thymeleaf.util.StringUtils;
 
 import com.ljh.exam.TwoProject.entity.Notice;
 
