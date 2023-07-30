@@ -40,27 +40,22 @@ public class NoticeService {
 		
 	}
 
+	public Page<Notice> noticesearchList(String searchType, String keyword, Pageable pageable) {
+	    Specification<Notice> spec = Specification.where(null);
+	    //내가입력한 값 즉 keyword가 비어잇지 않으면
+	    if (!StringUtils.isEmpty(keyword)) {
+	    	//검색하려는 serarchType이 title ? conteont? writer이랑 일치하는지 비교하여 마
+	        if ("title".equals(searchType)) {
+	            spec = spec.and(PersonSpecification.equalTitle(keyword));
+	        } else if ("content".equals(searchType)) {
+	            spec = spec.and(PersonSpecification.equalContent(keyword));
+	        } else if ("writer".equals(searchType)) {
+	            spec = spec.and(PersonSpecification.equalWriter(keyword));
+	        }
+	    }
 
-	public Page<Notice> noticeList(Pageable pageable) {
-		return noticeRepository.findAll(pageable);
+	    return noticeRepository.findAll(spec, pageable);
 	}
-
-
-	public Page<Notice> noticesearchList(String title, String content, String writer, Pageable pageable) {
-        Specification<Notice> spec = Specification.where(null);
-
-        if (!StringUtils.isEmpty(title)) {
-            spec = spec.and(PersonSpecification.equalTitle(title));
-        }
-        if (!StringUtils.isEmpty(content)) {
-            spec = spec.and(PersonSpecification.equalContent(content));
-        }
-        if (!StringUtils.isEmpty(writer)) {
-            spec = spec.and(PersonSpecification.equalWriter(writer));
-        }
-
-        return noticeRepository.findAll(spec, pageable);
-    }
 
 	
 }
