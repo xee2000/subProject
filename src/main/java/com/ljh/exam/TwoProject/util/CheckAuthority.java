@@ -8,11 +8,11 @@ import jakarta.servlet.http.HttpSession;
 public class CheckAuthority {
 	
 	public String checkLogin(HttpSession httpSession){
-        String loginId = (String) httpSession.getAttribute("loginUser");
-        if(loginId == null){
+        String LoginUser = (String) httpSession.getAttribute("LoginUser");
+        if(LoginUser == null){
             throw new RuntimeException("Wrong access _ Login session information does not exist");
         }
-        return loginId;
+        return LoginUser;
     }
 
     public String checkAuthority(HttpSession httpSession){

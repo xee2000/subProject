@@ -1,24 +1,37 @@
 package com.ljh.exam.TwoProject.interceptor;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class LoginIntercepter implements HandlerInterceptor{
-	
-	 @Override
-	    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-	    	return true;
-	    }
+public class LoginIntercepter implements HandlerInterceptor {
 
-	    @Override
-	    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-	    }
+	public List loginEssential = Arrays.asList("/user/**");
 
-	    @Override
-	    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-	    }
-	
+	public List loginInessential = Arrays.asList("/user/notice/**");
+
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		String LoginUser = (String) request.getSession().getAttribute("LoginUser");
+
+		if (LoginUser != null) {
+			return true;
+		}
+
+		else {
+			String destUri = request.getRequestURI();
+			String destQuery = request.getQueryString();
+			String dest = (destQuery == null) ? destUri : destUri + "?" + destQuery;
+			request.getSession().setAttribute("dest", dest);
+			
+			response.sendRedirect("/TwoProject/user/LoginForm");
+			return false;
+		}
+	}
 }

@@ -63,6 +63,7 @@ public class MemberController {
 		 JsonObject properties = jsonobject.getAsJsonObject("properties");
 	        String nickname = properties.get("nickname").getAsString();
 	      int result = memberService.sociallogin(id);
+	      String redirect = null;
 		 //저장된 id가 아닌경우 회원가입 필요계정
 		switch(result) {
 		//아이디 존재
@@ -70,33 +71,34 @@ public class MemberController {
 			User LoginUser = memberService.getById(id);
 			System.out.println("LoginUser :" +LoginUser.getNickname());
 			session.setAttribute("LoginUser", LoginUser);
+			//interceptor에 대한 확인을 위해 여기서 심긴다.
+			 session.setAttribute("authority", LoginUser.getManid());
+			 String dest = (String)session.getAttribute("dest");
+	           redirect = (dest == null) ? "/loginForm" : dest;
 			session.setMaxInactiveInterval(600*6);
 			model.addAttribute("LoginUser",LoginUser.getNickname());
 			break;
 			//아이디 미존재
 		case 0:	
 			memberService.socialkakaoregist(id,nickname);
+			//interceptor에 대한 확인을 위해 여기서 심긴다.
 			break;
 }
-		 return "redirect:/TwoProject/user/notice";
+		return "redirect:"+redirect;
 
 	}
 
 	public JsonObject createKakaoUser(String token) {
+		//이링크는 고정주소이다.
 	    String reqURL = "https://kapi.kakao.com/v2/user/me";
 	    
 	    try {
-	        // These two structures bring the URL that comes with it. If the URL does not have a problem such as security
-	        // Used to process data on the web, etc. of the address
+	        
 	        URL url = new URL(reqURL);
-	        // This method defaults to GET
-	        // url.openConnection is implemented through httpUrlconnection
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	        conn.setRequestMethod("GET");
-	        // If the above specifies the method, the below specifies in the form of key and value
 	        conn.setRequestProperty("Authorization", "Bearer " + token);
 	        
-	        // Bufferereader is a concept similar to Scanner. Here, the declaration proceeds.
 	        BufferedReader br = null;
 	        try {
 	            br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
