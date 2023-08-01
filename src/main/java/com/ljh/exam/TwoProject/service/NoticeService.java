@@ -73,7 +73,6 @@ public class NoticeService {
 	if(noticeFileList != null) {
 		  for (int i = 0; i < noticeFileList.size(); i++) {
 			  NoticeFile noticefile = noticeFileList.get(i);
-	            System.out.println("noticeFileList : " + noticeFileList);
 	            noticefile.setNno(nno);
 	            noticefileRepository.save(noticefile);
 	        }

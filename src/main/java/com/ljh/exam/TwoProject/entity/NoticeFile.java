@@ -29,7 +29,6 @@ public class NoticeFile {
 	private String uploadpath;
 	private String filetype;
 	private int nno;
-	private String uploadFile;
 	@CreatedDate
 	private Date regDate;
 	
