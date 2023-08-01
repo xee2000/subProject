@@ -18,5 +18,6 @@ public interface NoticeRepository extends JpaRepository<Notice,Integer>, JpaSpec
 
 
 
+
 }
 

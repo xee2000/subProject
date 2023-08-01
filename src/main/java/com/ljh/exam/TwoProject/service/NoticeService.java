@@ -1,5 +1,6 @@
 package com.ljh.exam.TwoProject.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -9,8 +10,11 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
 import com.ljh.exam.TwoProject.PersonSpecification.PersonSpecification;
+import com.ljh.exam.TwoProject.command.NoticeRegistCommnad;
 import com.ljh.exam.TwoProject.entity.Notice;
+import com.ljh.exam.TwoProject.entity.NoticeFile;
 import com.ljh.exam.TwoProject.mapper.NoticeRepository;
+import com.ljh.exam.TwoProject.mapper.NoticefileRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class NoticeService {
 
 	private final NoticeRepository noticeRepository;
+	private final NoticefileRepository noticefileRepository;
 
 	public Optional<Notice> noticeDetail(int manid) {
 		// TODO Auto-generated method stub
@@ -36,6 +41,7 @@ public class NoticeService {
 	}
 
 	public void noticewrite(Notice notice) {
+		
 		noticeRepository.save(notice);
 		
 	}
@@ -57,5 +63,21 @@ public class NoticeService {
 	    return noticeRepository.findAll(spec, pageable);
 	}
 
-	
+	public void noticewrite(List<NoticeFile> noticeFileList, NoticeRegistCommnad noticeReq) {
+		String content = noticeReq.getContent();
+		String writer = noticeReq.getWriter();
+		String title = noticeReq.getTitle();
+		Notice notice = new Notice(writer,title,content);
+		noticeRepository.save(notice);
+	int nno = notice.getNno();
+	if(noticeFileList != null) {
+		  for (int i = 0; i < noticeFileList.size(); i++) {
+			  NoticeFile noticefile = noticeFileList.get(i);
+	            System.out.println("noticeFileList : " + noticeFileList);
+	            noticefile.setNno(nno);
+	            noticefileRepository.save(noticefile);
+	        }
+	}
+
+	}
 }

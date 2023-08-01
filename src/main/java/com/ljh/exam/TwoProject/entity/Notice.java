@@ -17,15 +17,20 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class NoticeFile {
+public class Notice {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int nfo;
-	private String filename;
-	private String filesize;
-	private String uploadpath;
 	private int nno;
+	private String writer;
+	private String title;
+	private String content;
 	@CreatedDate
 	private Date regDate;
+	private Date updateDate;
 	
-	
+	public Notice(String writer, String title, String content) {
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+	}
 }
+	

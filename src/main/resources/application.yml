@@ -60,4 +60,7 @@ profiles:
   include: oauth
 
   spring:
-  profiles: oauth
+  profiles: oauth 
+  
+noticefile:
+  path: C:\wark\sts-4.18.0.RELEASE-workspace\TwoProject\src\main\resources\static\resources\user\file
