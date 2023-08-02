@@ -34,7 +34,7 @@ public class OauthService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=cf0617c5eac0b9883dbc29f8fb4dc404"); // TODO REST_API_KEY 입력
-            sb.append("&redirect_uri=http://localhost/TwoProject/kakaologin"); // TODO 인가코드 받은 redirect_uri 입력
+            sb.append("&redirect_uri=http://localhost/TwoProject/user/kakaologin"); // TODO 인가코드 받은 redirect_uri 입력
             sb.append("&code=" + code);
             bw.write(sb.toString());
             bw.flush();

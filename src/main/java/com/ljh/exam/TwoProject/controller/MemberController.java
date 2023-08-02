@@ -24,7 +24,7 @@ import com.ljh.exam.TwoProject.service.OauthService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
-
+@RequestMapping("/TwoProject/user")
 @RequiredArgsConstructor
 @Controller
 public class MemberController {
@@ -33,24 +33,24 @@ public class MemberController {
 	private final OauthService oauthService;
 	
 	
-	@RequestMapping("/TwoProject/user/main")
+	@GetMapping("/main")
 	public String usermain() {
 		return "main";
 	}
 	
-	@GetMapping("/TwoProject/user/LoginForm")
+	@GetMapping("/LoginForm")
 	public String loginForm() {
 		return"/user/loginForm";
 	}
 	
 	
 	
-	@GetMapping("/TwoProject/user/kakao/socialLoginForm")
+	@GetMapping("/kakao/socialLoginForm")
 	public String socailLoginForm() {
 		return"/member/";
 	}
 	
-	@GetMapping("/TwoProject/kakaologin")
+	@GetMapping("/kakaologin")
 	public String kakaoCallback(@RequestParam String code, Model model, HttpSession session) {
 		//주소줄에 들어온 code값을 통해 access_token즉 사용자 인증정보가 담긴 토큰으로 리턴
 		String access_Token = oauthService.getKakaoAccessToken(code);
@@ -63,7 +63,6 @@ public class MemberController {
 		 JsonObject properties = jsonobject.getAsJsonObject("properties");
 	        String nickname = properties.get("nickname").getAsString();
 	      int result = memberService.sociallogin(id);
-	      String redirect = null;
 		 //저장된 id가 아닌경우 회원가입 필요계정
 		switch(result) {
 		//아이디 존재
@@ -72,9 +71,6 @@ public class MemberController {
 			System.out.println("LoginUser :" +LoginUser.getNickname());
 			session.setAttribute("LoginUser", LoginUser);
 			//interceptor에 대한 확인을 위해 여기서 심긴다.
-			 session.setAttribute("authority", LoginUser.getManid());
-			 String dest = (String)session.getAttribute("dest");
-	           redirect = (dest == null) ? "/loginForm" : dest;
 			session.setMaxInactiveInterval(600*6);
 			model.addAttribute("LoginUser",LoginUser.getNickname());
 			break;
@@ -84,7 +80,8 @@ public class MemberController {
 			//interceptor에 대한 확인을 위해 여기서 심긴다.
 			break;
 }
-		return "redirect:"+redirect;
+		
+		    return "redirect:/TwoProject/user/notice";
 
 	}
 
