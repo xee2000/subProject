@@ -10,7 +10,7 @@ mvc:
   static-path-pattern: /static/**
 
 # Data Source Configuration
-
+# Data Source Configuration
 spring:
   datasource:
     url: jdbc:mariadb://localhost:3306/mystudy
