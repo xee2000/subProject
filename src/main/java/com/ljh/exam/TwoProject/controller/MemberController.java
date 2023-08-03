@@ -35,7 +35,7 @@ public class MemberController {
 	
 	@GetMapping("/main")
 	public String usermain() {
-		return "main";
+		return "/user/main";
 	}
 	
 	@GetMapping("/LoginForm")
@@ -81,7 +81,7 @@ public class MemberController {
 			break;
 }
 		
-		    return "redirect:/TwoProject/user/notice";
+		    return "redirect:/TwoProject/user/main";
 
 	}
 

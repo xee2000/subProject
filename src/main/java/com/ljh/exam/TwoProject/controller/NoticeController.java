@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,6 +27,7 @@ import com.ljh.exam.TwoProject.service.NoticeService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
+@RequestMapping("/TwoProject/user/notice")
 @RequiredArgsConstructor
 @Controller
 public class NoticeController {
@@ -35,7 +37,7 @@ public class NoticeController {
 	@Value("${noticefile.path}")
 	private String uploadDir;
 
-	@GetMapping("/TwoProject/user/notice")
+	@GetMapping("/list")
 	public String boardList(Model model, @RequestParam(name = "page", defaultValue = "1") int page,
 			@PageableDefault(size = 10, sort = "nno", direction = Sort.Direction.DESC) Pageable pageable,
 			@RequestParam(name = "searchType", defaultValue = "") String searchType,
@@ -52,7 +54,7 @@ public class NoticeController {
 		return "/notice/list";
 	}
 
-	@GetMapping("/TwoProject/user/notice/writeForm")
+	@GetMapping("/writeForm")
 	public String writeForm(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("LoginUser");
 		if (user != null) {
@@ -65,7 +67,7 @@ public class NoticeController {
 
 	}
 
-	@PostMapping(value = "/TwoProject/user/notice/writeregist", produces = "text/plain;charset=utf-8")
+	@PostMapping(value = "/writeregist", produces = "text/plain;charset=utf-8")
 	public String write(NoticeRegistCommnad noticeReq, MultipartFile files) {
 		List<MultipartFile> multiFiles = noticeReq.getUploadFile();
 		String savePath = this.uploadDir;

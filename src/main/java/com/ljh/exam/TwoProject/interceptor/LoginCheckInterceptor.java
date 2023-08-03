@@ -10,13 +10,10 @@ import jakarta.servlet.http.HttpSession;
 		@Override
 		public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 				throws Exception {
-
+					//바로 직전에 접속한 urI의 주소를 가져온다.
 			String requestURI = request.getRequestURI();
 			System.out.println("[interceptor] : " + requestURI);
 			HttpSession session = request.getSession(false);
-			   if (requestURI.startsWith("/resources/") || requestURI.equals("/favicon.ico")) {
-			        return true;
-			    }
 			if(session == null || session.getAttribute("LoginUser") == null) {
 	       		// 로그인 되지 않음
 				System.out.println("[미인증 사용자 요청]");
