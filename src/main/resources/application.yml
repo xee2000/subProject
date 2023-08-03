@@ -16,7 +16,6 @@ spring:
     username: root
     password: java
     driverClassName: org.mariadb.jdbc.Driver
-  profiles: oauth
 
 # Encoding
 server:
@@ -47,9 +46,6 @@ jpa:
       dialect: org.hibernate.dialect.MariaDBDialect
       format_sql: true
 
-# Profiles
-profiles:
-  include: oauth
   
 # Custom Configuration (if required)
 noticefile:

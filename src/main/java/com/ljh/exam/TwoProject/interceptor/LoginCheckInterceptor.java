@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 	public class LoginCheckInterceptor implements HandlerInterceptor {
-		@Override
 		public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 				throws Exception {
 					//바로 직전에 접속한 urI의 주소를 가져온다.
