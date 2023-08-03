@@ -5,6 +5,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,7 +26,6 @@ import com.ljh.exam.TwoProject.entity.NoticeFile;
 import com.ljh.exam.TwoProject.entity.User;
 import com.ljh.exam.TwoProject.service.NoticeService;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @RequestMapping("/TwoProject/user/notice")
@@ -83,7 +84,7 @@ public class NoticeController {
 		return url;
 	}
 	
-	public class FileSizeConverter {
+	public static class FileSizeConverter {
 		public static String convertFileSize(long bytes) {
 			if (bytes < 1024) {
 				return bytes + " B";

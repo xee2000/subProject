@@ -8,6 +8,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +23,6 @@ import com.ljh.exam.TwoProject.entity.User;
 import com.ljh.exam.TwoProject.service.MemberService;
 import com.ljh.exam.TwoProject.service.OauthService;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @RequestMapping("/TwoProject/user")
