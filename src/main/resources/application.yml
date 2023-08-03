@@ -10,12 +10,19 @@ mvc:
   static-path-pattern: /static/**
 
 # Data Source Configuration
+
 spring:
   datasource:
     url: jdbc:mariadb://localhost:3306/mystudy
     username: root
     password: java
     driverClassName: org.mariadb.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+        hbm2ddl.auto: update
+        show_sql: true
 
 # Encoding
 server:
