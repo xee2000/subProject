@@ -1,20 +1,23 @@
-# Thymeleaf 설정
+# Thymeleaf
 thymeleaf:
   check-template-location: true
   prefix: classpath:/templates/
   suffix: .html
   cache: false
 
+# Spring MVC
 mvc:
   static-path-pattern: /static/**
 
+# Data Source Configuration
 spring:
   datasource:
     url: jdbc:mariadb://localhost:3306/mystudy
     username: root
     password: java
     driverClassName: org.mariadb.jdbc.Driver
- 
+  profiles: oauth
+
 # Encoding
 server:
   servlet:
@@ -28,18 +31,13 @@ server:
     converters:
       preferred-json-mapper: gson
 
+# Servlet Configuration
 servlet:
   multipart:
     max-file-size: 1MB
     max-request-size: 10MB
 
-# JDBC
-datasource:
-  driverClassName: org.mariadb.jdbc.Driver
-  url: jdbc:mariadb://localhost:3306/mystudy
-  username: root
-  password: java
-
+# JPA Configuration
 jpa:
   hibernate:
     ddl-auto: update
@@ -49,18 +47,10 @@ jpa:
       dialect: org.hibernate.dialect.MariaDBDialect
       format_sql: true
 
-# MyBatis
-mybatis:
-  type-aliases-package: com.ljh.exam.TwoProject.entity
-  configuration:
-    map-underscore-to-camel-case: false
-  mapper-locations: com.ljh.exam.TwoProject.mapper/*.xml
-
+# Profiles
 profiles:
   include: oauth
-
-  spring:
-  profiles: oauth 
   
+# Custom Configuration (if required)
 noticefile:
   path: C:\wark\sts-4.18.0.RELEASE-workspace\TwoProject\src\main\resources\static\resources\user\file
